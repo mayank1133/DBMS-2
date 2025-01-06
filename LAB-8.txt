@@ -1,0 +1,149 @@
+// 1. Create a new database named "Darshan"
+use Darshan;
+
+// 2. Create another new database named "DIET"
+use DIET;
+
+// 3. List all databases
+show databases;
+
+// 4. Check the current database
+db;
+
+// 5. Drop "DIET" database
+use DIET;
+db.dropDatabase();
+
+// 6. Create a collection named "Student" in the "Darshan" database
+use Darshan;
+db.createCollection("Student");
+
+// 7. Create a collection named "Department" in the "Darshan" database
+db.createCollection("Department");
+
+// 8. List all collections in the "Darshan" database
+show collections;
+
+// 9. Insert a single document using insertOne into "Department" collection
+db.Department.insertOne({
+    Dname: 'CE', 
+    HOD: 'Patel'
+});
+
+// 10. Insert two documents using insertMany into "Department" collection
+db.Department.insertMany([
+    { Dname: 'IT' },
+    { Dname: 'ICT' }
+]);
+
+// 11. Drop a collection named "Department" from the "Darshan" database
+db.Department.drop();
+
+// 12. Insert a single document using insertOne into "Student" collection
+db.Student.insertOne({
+    Name: 'John Doe',
+    City: 'New York',
+    Branch: 'Computer Science',
+    Semester: 3,
+    Age: 21
+});
+
+// 13. Insert three documents using insertMany into "Student" collection
+db.Student.insertMany([
+    { Name: 'Alice', City: 'London', Branch: 'Mechanical', Semester: 5, Age: 22 },
+    { Name: 'Bob', City: 'Paris', Branch: 'Electrical', Semester: 4, Age: 23 },
+    { Name: 'Charlie', City: 'Berlin', Branch: 'Civil', Semester: 2, Age: 20 }
+]);
+
+// 14. Check whether "Student" collection exists or not
+db.getCollectionNames(); // Will show "Student" if it exists
+
+// 15. Check the stats of "Student" collection
+db.Student.stats();
+
+// 16. Drop the "Student" collection
+db.Student.drop();
+
+// 17. Create a collection named "Deposit"
+db.createCollection("Deposit");
+
+// 18. Insert following data into "Deposit" collection
+db.Deposit.insertMany([
+    { ACTNO: 101, CNAME: 'ANIL', BNAME: 'VRCE', AMOUNT: 1000.00, CITY: 'RAJKOT' },
+    { ACTNO: 102, CNAME: 'SUNIL', BNAME: 'AJNI', AMOUNT: 5000.00, CITY: 'SURAT' },
+    { ACTNO: 103, CNAME: 'MEHUL', BNAME: 'KAROLBAGH', AMOUNT: 3500.00, CITY: 'BARODA' },
+    { ACTNO: 104, CNAME: 'MADHURI', BNAME: 'CHANDI', AMOUNT: 1200.00, CITY: 'AHMEDABAD' },
+    { ACTNO: 105, CNAME: 'PRMOD', BNAME: 'M.G. ROAD', AMOUNT: 3000.00, CITY: 'SURAT' },
+    { ACTNO: 106, CNAME: 'SANDIP', BNAME: 'ANDHERI', AMOUNT: 2000.00, CITY: 'RAJKOT' },
+    { ACTNO: 107, CNAME: 'SHIVANI', BNAME: 'VIRAR', AMOUNT: 1000.00, CITY: 'SURAT' },
+    { ACTNO: 108, CNAME: 'KRANTI', BNAME: 'NEHRU PLACE', AMOUNT: 5000.00, CITY: 'RAJKOT' }
+]);
+
+// 19. Display all the documents of "Deposit" collection
+db.Deposit.find().pretty();
+
+// 20. Drop the "Deposit" collection
+db.Deposit.drop();
+
+
+
+
+
+
+------------------------------Part-B---------------------------
+
+To execute the required tasks using MongoDB, you can follow these steps:
+
+### 1. Create a new database named "Computer":
+```javascript
+use Computer
+```
+
+This command will switch to the "Computer" database. If it doesn’t exist yet, MongoDB will create it when you add a document.
+
+### 2. Create a collection named "Faculty" in the "Computer" database:
+MongoDB automatically creates a collection when you insert data into it, so we don't need to explicitly create it beforehand. However, for clarity, you can create the collection by inserting a document into it.
+
+### 3. Insert a document using `insertOne` into the "Faculty" collection:
+```javascript
+db.Faculty.insertOne({
+  FID: 1,
+  FNAME: "ANIL",
+  BNAME: "CE",
+  SALARY: 10000,
+  JDATE: "1-3-95"
+})
+```
+
+### 4. Insert multiple documents using `insertMany` into the "Faculty" collection:
+```javascript
+db.Faculty.insertMany([
+  { FID: 2, FNAME: "SUNIL", BNAME: "CE", SALARY: 50000, JDATE: "4-1-96" },
+  { FID: 3, FNAME: "MEHUL", BNAME: "IT", SALARY: 35000, JDATE: "17-11-95" },
+  { FID: 4, FNAME: "MADHURI", BNAME: "IT", SALARY: 12000, JDATE: "17-12-95" },
+  { FID: 5, FNAME: "PRMOD", BNAME: "CE", SALARY: 30000, JDATE: "27-3-96" },
+  { FID: 6, FNAME: "SANDIP", BNAME: "CE", SALARY: 20000, JDATE: "31-3-96" },
+  { FID: 7, FNAME: "SHIVANI", BNAME: "CE", SALARY: 10000, JDATE: "5-9-95" },
+  { FID: 8, FNAME: "KRANTI", BNAME: "IT", SALARY: 50000, JDATE: "2-7-95" }
+])
+```
+
+### 5. Display all the documents in the "Faculty" collection:
+```javascript
+db.Faculty.find()
+```
+
+This command will display all the documents in the "Faculty" collection.
+
+### 6. Drop the "Faculty" collection:
+```javascript
+db.Faculty.drop()
+```
+
+This will remove the "Faculty" collection from the "Computer" database.
+
+### 7. Drop the "Computer" database:
+```javascript
+use Computer
+db.dropDatabase()
+```

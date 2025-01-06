@@ -1,0 +1,100 @@
+
+
+### 1. Retrieve/Display every document of the Deposit collection.
+```javascript
+use BANK_INFO;
+db.Deposit.find();
+```
+
+### 2. Display only one document of the Deposit collection. (Use: `findOne()`)
+```javascript
+use BANK_INFO;
+db.Deposit.findOne();
+```
+
+### 3. Insert the following document into the Deposit collection. (Use: `insertOne()`)
+```javascript
+use BANK_INFO;
+db.Deposit.insertOne({
+    ACTNO: 109,
+    CNAME: "KIRTI",
+    BNAME: "VIRAR",
+    AMOUNT: 3000,
+    ADATE: "3-5-97"
+});
+```
+
+### 4. Insert the following documents into the Deposit collection. (Use: `insertMany()`)
+```javascript
+use BANK_INFO;
+db.Deposit.insertMany([
+    { ACTNO: 110, CNAME: "MITALI", BNAME: "ANDHERI", AMOUNT: 4500, ADATE: "4-9-95" },
+    { ACTNO: 111, CNAME: "RAJIV", BNAME: "NEHRU PLACE", AMOUNT: 7000, ADATE: "2-10-98" }
+]);
+```
+
+### 5. Display all the documents of 'VIRAR' branch from the Deposit collection.
+```javascript
+use BANK_INFO;
+db.Deposit.find({ BNAME: "VIRAR" });
+```
+
+### 6. Display all the documents of Deposit collection whose amount is between 3000 and 5000.
+```javascript
+use BANK_INFO;
+db.Deposit.find({ AMOUNT: { $gte: 3000, $lte: 5000 } });
+```
+
+### 7. Display all the documents of Deposit collection whose amount is greater than 2000 and branch is VIRAR.
+```javascript
+use BANK_INFO;
+db.Deposit.find({ AMOUNT: { $gt: 2000 }, BNAME: "VIRAR" });
+```
+
+### 8. Display all the documents with `CNAME`, `BNAME`, and `AMOUNT` fields from the Deposit collection.
+```javascript
+use BANK_INFO;
+db.Deposit.find({}, { CNAME: 1, BNAME: 1, AMOUNT: 1 });
+```
+
+### 9. Display all the documents of Deposit collection in ascending order by `CNAME`.
+```javascript
+use BANK_INFO;
+db.Deposit.find().sort({ CNAME: 1 });
+```
+
+### 10. Display all the documents of Deposit collection in descending order by `BNAME`.
+```javascript
+use BANK_INFO;
+db.Deposit.find().sort({ BNAME: -1 });
+```
+
+### 11. Display all the documents of Deposit collection in ascending order by `ACTNO` and descending order by `AMOUNT`.
+```javascript
+use BANK_INFO;
+db.Deposit.find().sort({ ACTNO: 1, AMOUNT: -1 });
+```
+
+### 12. Display only two documents of Deposit collection.
+```javascript
+use BANK_INFO;
+db.Deposit.find().limit(2);
+```
+
+### 13. Display the 3rd document of the Deposit collection.
+```javascript
+use BANK_INFO;
+db.Deposit.find().skip(2).limit(1);
+```
+
+### 14. Display the 6th and 7th documents of the Deposit collection.
+```javascript
+use BANK_INFO;
+db.Deposit.find().skip(5).limit(2);
+```
+
+### 15. Display the count of documents in the Deposit collection.
+```javascript
+use BANK_INFO;
+db.Deposit.countDocuments();
+```
